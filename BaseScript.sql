@@ -1,0 +1,22 @@
+CREATE DATABASE IF NOT EXISTS test_api;
+USE test_api;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(100),
+  email VARCHAR(100),
+  password VARCHAR(100)
+);
+
+CREATE TABLE entities (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE user_entities (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  userId INT,
+  entityId INT,
+  FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (entityId) REFERENCES entities(id) ON DELETE CASCADE
+);
