@@ -14,12 +14,12 @@ const colonnes = [
   { key: 'password', label: 'password' },
 ]
 
-const fetchUsers = async () => {
+const charger = async () => {
   try {
     const res = await userService.getAll()
     users.value = res.data
   } catch (err) {
-    console.error('Erreur chargement utilisateurs', err)
+    console.error('Erreur chargement Users', err)
   }
 }
 
@@ -32,17 +32,17 @@ const handleModifier = (user) => {
 }
 
 const handleSupprimer = async (id) => {
-  if (confirm('Supprimer cet utilisateur ?')) {
+  if (confirm('Supprimer cet User ?')) {
     await userService.delete(id)
-    fetchUsers()
+    charger()
   }
 }
 
-onMounted(fetchUsers)
+onMounted(charger)
 </script>
 <template>
   <div>
-    <h2>Liste des utilisateurs</h2>
+    <h2>Liste des Users</h2>
 
     <button @click="onNouveauClick">Nouveau User</button>
 

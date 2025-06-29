@@ -27,9 +27,11 @@ const modifier = (entity) => {
   router.push(`/entities/modifier/${entity.id}`)
 }
 
-const supprimer = async (entity) => {
-  await entityService.delete(entity.id)
-  charger()
+const handleSupprimer = async (id) => {
+  if (confirm('Supprimer cette Entité ?')) {
+    await entityService.delete(id)
+    charger()
+  }
 }
 
 onMounted(charger)
@@ -38,6 +40,6 @@ onMounted(charger)
   <div>
     <h2>Liste des entités</h2>
     <button @click="ajouter">Nouvelle entité</button>
-    <Tableau :colonnes="colonnes" :donnees="entities" @modifier="modifier" @supprimer="supprimer" />
+    <Tableau :colonnes="colonnes" :donnees="entities" @modifier="modifier" @supprimer="handleSupprimer" />
   </div>
 </template>
