@@ -7,7 +7,7 @@ const UserEntity = {
 
   getAll: (callback) => {
     db.query(
-      `SELECT ue.id, ue.userId, u.username, ue.entityId, e.name AS entityName 
+      `SELECT ue.id, ue.userId, u.username, ue.entityId, e.name AS entityName, u.email, u.password
        FROM user_entities ue 
        JOIN users u ON ue.userId = u.id 
        JOIN entities e ON ue.entityId = e.id`,

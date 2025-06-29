@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'http://localhost:3000/entities'
+const API_URL = 'http://localhost:3000/user-entities'
 
 export default {
   getAll() {

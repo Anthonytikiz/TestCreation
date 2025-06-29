@@ -1,22 +1,54 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <div class="app-container">
+    <nav>
+      <ul>
+        <li><router-link to="/users">User</router-link></li>
+        <li><router-link to="/user-entities">UserEntities</router-link></li>
+        <li><router-link to="/entities">Entités</router-link></li>
+      </ul>
+    </nav>
+    <main>
+      <router-view />
+    </main>
+  </div>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.app-container {
+  display: flex;
+  height: 100vh;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+nav {
+  width: 200px;
+  background-color: #2c3e50;
+  padding: 20px;
+  margin: 0;
+  color: white;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  margin-bottom: 16px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a.router-link-exact-active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
 }
 </style>
